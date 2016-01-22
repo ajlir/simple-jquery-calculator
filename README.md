@@ -1,2 +1,2 @@
 # simple-jquery-calculator
-A simple JQuery Calculator
+This is a simple calculator that I attempted to do in JQuery.
