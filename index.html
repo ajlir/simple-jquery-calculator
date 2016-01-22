@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+        body { padding: 20px; }
+        div { margin: 10px 0; }
+        input[type=text] { padding: 4px 8px; margin: 5px 0;}
+    </style>
+</head>
+<body>
+<input id="dis" type="text" size="40" />
+<div class="num">
+    <input type="button" value="0" />
+    <input type="button" value="1" />
+    <input type="button" value="2" />
+    <input type="button" value="3" />
+    <input type="button" value="4" />
+    <input type="button" value="5" />
+    <input type="button" value="6" />
+    <input type="button" value="7" />
+    <input type="button" value="8" />
+    <input type="button" value="9" />
+</div>
+<div id="oper">
+    <input type="button" value="+" />
+    <input type="button" value="-" />
+    <input type="button" value="x" />
+    <input type="button" value="/" />
+</div>
+<div id="equ">
+    <input type="button" value="=" />
+    <input type="button" value="CLEAR" />
+</div>
+	<script src="jquery.min.js"></script>
+    <script> 	
+    	// Take any input of button when it is clicked
+  		$('input:button').click(function() {
+  
+  		// Button value is copied into a variable named text
+    		var text = $(this).attr('value');
+    
+  		// Check if the button click is equal, if yes, calculate the statement
+    		if (text == '=') {
+    
+  		// try catch is used if statement does not make sense e.g. xx2, /3/4, 
+  		// etc.
+      		try {
+      
+  		// variable str is used to hold textbox value and replace x alphabet 
+  		// to * character
+  		// which represents multiplication in programming
+        		var str = $('#dis').val();
+        		str = str.replace('x', '*');
+        
+  		// Output is sent to textbox
+        		$('#dis').val(eval(str));
+      		} catch (e) {
+      
+  		// Display ERROR in textbox if statement can't be evaluated
+  	      		$('#dis').val('ERROR');
+      		}
+      
+  		// If CLEAR is pressed, clear the textbox
+    		} else if (text == 'CLEAR') {
+      			$('#dis').val('');
+  
+  		// For any buttons besides = and CLEAR
+  		// Append button value into textbox value
+    		} else
+      			$('#dis').val($('#dis').val() + $(this).val());
+  		});
+   	</script>
+</body>
+</html>
